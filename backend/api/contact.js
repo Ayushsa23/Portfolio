@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-const serverlessExpress = require('@vendia/serverless-express');
 
 const app = express();
 app.use(cors());
@@ -48,4 +47,10 @@ app.post('/', async (req, res) => {
   }
 });
 
-module.exports = serverlessExpress({ app }); 
+module.exports = (req, res) => {
+  if (req.method === 'POST') {
+    app(req, res);
+  } else {
+    res.status(405).json({ error: 'Method Not Allowed' });
+  }
+}; 
