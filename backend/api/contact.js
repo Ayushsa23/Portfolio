@@ -2,10 +2,25 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const serverlessExpress = require('@vendia/serverless-express');
 
 const app = express();
-app.use(cors());
+
+// Update CORS to allow Netlify frontend
+app.use(cors({
+  origin: 'https://ayushsa23.netlify.app',
+  methods: ['POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
 app.use(express.json());
+
+// Handle preflight OPTIONS requests
+app.options('/', (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'https://ayushsa23.netlify.app');
+  res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+  res.status(204).send('');
+});
 
 // Get email credentials from environment variables
 const EMAIL_USER = process.env.EMAIL_USER;
@@ -47,10 +62,4 @@ app.post('/', async (req, res) => {
   }
 });
 
-module.exports = (req, res) => {
-  if (req.method === 'POST') {
-    app(req, res);
-  } else {
-    res.status(405).json({ error: 'Method Not Allowed' });
-  }
-}; 
+module.exports = serverlessExpress({ app }); 
