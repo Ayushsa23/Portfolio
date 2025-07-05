@@ -6,9 +6,9 @@ const serverlessExpress = require('@vendia/serverless-express');
 
 const app = express();
 
-// Update CORS to allow Netlify frontend
+// Allow all origins for debugging
 app.use(cors({
-  origin: 'https://ayushsa23.netlify.app',
+  origin: '*',
   methods: ['POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }));
@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Handle preflight OPTIONS requests
 app.options('/', (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'https://ayushsa23.netlify.app');
+  res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type');
   res.status(204).send('');
