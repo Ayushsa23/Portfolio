@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+/* Global heading styles using Montserrat */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
 
 html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: #f6f8fc;
+  background: #efefef;
   color: #222;
-  font-family: 'Quicksand', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-family: 'Open Sans', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 
 .portfolio-container {
@@ -254,7 +259,7 @@ a:hover {
 }
 
 .home-right-panel {
-  background: linear-gradient(120deg, #f8f9fa 80%, #eaf6ff 100%);
+  background: linear-gradient(120deg, #efefef 80%, #e5e5e5 100%);
   border-radius: 0 24px 24px 0;
   padding: 48px 36px 36px 36px;
   min-height: 100%;
@@ -438,7 +443,7 @@ a:hover {
   min-height: 100vh;
   background: linear-gradient(135deg, #181818 0%, #23272f 100%);
   color: #f5f5f5;
-  font-family: 'Quicksand', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-family: 'Open Sans', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -516,9 +521,9 @@ a:hover {
 .main-site {
   width: 100%;
   min-height: 100vh;
-  background: #f6f8fc !important;
+  background: #efefef !important;
   color: #222;
-  font-family: 'Quicksand', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-family: 'Open Sans', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
@@ -528,7 +533,7 @@ a:hover {
   position: sticky;
   top: 0;
   width: 100%;
-  background: #23272fdd;
+  background: rgba(239, 239, 239, 0.95);
   display: flex;
   justify-content: center;
   gap: 36px;
@@ -539,7 +544,7 @@ a:hover {
 }
 
 .nav-link {
-  color: #b0b8c1;
+  color: #23272f;
   font-size: 1.08rem;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -549,7 +554,7 @@ a:hover {
   transition: background 0.2s, color 0.2s;
 }
 .nav-link:hover {
-  background: #7ec4ff22;
+  background: rgba(126, 196, 255, 0.15);
   color: #7ec4ff;
 }
 
@@ -650,7 +655,7 @@ a:hover {
 }
 .hero-intro {
   font-size: 1.1rem;
-  color: #b0b8c1;
+  color: #555;
   max-width: 500px;
 }
 
@@ -671,15 +676,15 @@ section h2 {
 
 .about-section p {
   font-size: 1.1rem;
-  color: #b0b8c1;
+  color: #555;
   max-width: 700px;
   line-height: 1.7;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -696,32 +701,103 @@ section h2 {
 }
 
 .skill-card {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.skill-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 14px;
+}
+
+.skill-card.flipped .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-card-front, .skill-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(126,196,255,0.08);
+}
+
+.skill-card-front {
   background: #d6eaff;
   color: #23272f;
-  border-radius: 14px;
-  padding: 22px 0;
   font-size: 1.1rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(126,196,255,0.08);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
-.skill-card:nth-child(2) {
+
+.skill-card-back {
+  background: #efefef;
+  color: #23272f;
+  transform: rotateY(180deg);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  padding: 20px;
+}
+
+.skill-card:nth-child(1) .skill-card-front {
+  background: #d6eaff;
+}
+.skill-card:nth-child(2) .skill-card-front {
   background: #e6e6ff;
 }
-.skill-card:nth-child(3) {
+.skill-card:nth-child(3) .skill-card-front {
   background: #d9f7e6;
 }
-.skill-card:nth-child(4) {
+.skill-card:nth-child(4) .skill-card-front {
   background: #ffe9d6;
 }
-.skill-card:hover {
+
+.skill-card:hover .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-card:hover .skill-card-front {
   background: #b3e0ff;
-  color: #23272f;
-  transform: translateY(-4px) scale(1.04);
+}
+
+/* Add smooth transitions and improve the flip effect */
+.skill-card {
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: scale(1.02);
+}
+
+.skill-card-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add a subtle shadow effect on hover */
+.skill-card:hover .skill-card-front,
+.skill-card:hover .skill-card-back {
+  box-shadow: 0 4px 16px rgba(126,196,255,0.15);
+}
+
+/* Ensure text is readable on both sides */
+.skill-card-back {
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .projects-grid {
@@ -783,13 +859,31 @@ section h2 {
   section {
     padding: 0 4px;
   }
-  .skills-grid, .projects-grid {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .projects-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
   .profile-pic {
     width: 100px;
     height: 100px;
+  }
+  
+  /* Mobile optimizations for flip cards */
+  .skill-card {
+    height: 140px;
+  }
+  
+  .skill-card-back {
+    font-size: 0.9rem;
+    padding: 16px;
+  }
+  
+  .skill-card-front {
+    font-size: 1rem;
   }
 }
 
@@ -877,7 +971,7 @@ section h2 {
 }
 .hero-bio {
   font-size: 1.1rem;
-  color: #b0b8c1;
+  color: #555;
   margin-bottom: 22px;
   margin-top: 8px;
   line-height: 1.7;
@@ -1071,7 +1165,7 @@ section h2 {
   color: #7ec4ff;
   font-weight: 600;
   text-decoration: none;
-  background: #f6f8fc;
+  background: #efefef;
   padding: 6px 16px;
   border-radius: 8px;
   transition: background 0.2s, color 0.2s;
@@ -1102,7 +1196,7 @@ section h2 {
   border-radius: 10px;
   font-size: 1rem;
   font-family: inherit;
-  background: #f6f8fc;
+  background: #efefef;
   color: #23272f;
   transition: border 0.2s, box-shadow 0.2s;
   box-sizing: border-box;
@@ -1130,4 +1224,133 @@ section h2 {
 .contact-form button:hover {
   background: #4bb3fd;
   color: #fff;
+}
+
+/* Project Detail Page Responsive Styles */
+.project-detail-page {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-detail-page h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #7ec4ff;
+  font-weight: 700;
+}
+
+.project-detail-page p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.project-detail-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.project-detail-section img {
+  width: 260px;
+  height: auto;
+  border-radius: 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  flex-shrink: 0;
+}
+
+.project-detail-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #7ec4ff;
+  font-weight: 600;
+}
+
+.project-detail-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 0;
+}
+
+.project-detail-section.alternate {
+  flex-direction: row-reverse;
+}
+
+.back-link {
+  display: inline-block;
+  color: #7ec4ff;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 2rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #aee6ff;
+}
+
+/* Mobile responsive styles for project detail pages */
+@media (max-width: 768px) {
+  .project-detail-page {
+    padding: 1rem;
+  }
+  
+  .project-detail-page h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project-detail-page p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-detail-section {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .project-detail-section img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 24px;
+  }
+  
+  .project-detail-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .project-detail-section p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-detail-page {
+    padding: 0.8rem;
+  }
+  
+  .project-detail-page h2 {
+    font-size: 1.8rem;
+  }
+  
+  .project-detail-section img {
+    max-width: 280px;
+    border-radius: 20px;
+  }
+  
+  .project-detail-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .project-detail-section p {
+    font-size: 0.9rem;
+  }
 }

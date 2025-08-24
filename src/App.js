@@ -90,49 +90,49 @@ function ProjectDetail({ title, description, images }) {
 
   if (title === 'Travel Buddy App') {
     return (
-      <div className="project-detail-page" style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
+      <div className="project-detail-page">
         <h2>{title}</h2>
-        <p style={{ marginBottom: 32 }}>{description}</p>
+        <p>{description}</p>
         {travelBuddySections.map((section, idx) => (
-          <div key={section.label} style={{ display: 'flex', flexDirection: idx % 2 === 0 ? 'row' : 'row-reverse', alignItems: 'center', marginBottom: 48, gap: 32 }}>
-            <img src={section.img} alt={section.label} style={{ width: 260, height: 'auto', borderRadius: '32px', boxShadow: '0 4px 24px rgba(0,0,0,0.10)' }} />
+          <div key={section.label} className={`project-detail-section ${idx % 2 === 1 ? 'alternate' : ''}`}>
+            <img src={section.img} alt={section.label} />
             <div>
-              <h3 style={{ marginBottom: 12 }}>{section.label}</h3>
+              <h3>{section.label}</h3>
               <p>{section.text}</p>
             </div>
           </div>
         ))}
-        <Link to="/" style={{ color: '#7ec4ff', textDecoration: 'underline' }}>Back to Home</Link>
+        <Link to="/" className="back-link">Back to Home</Link>
       </div>
     );
   }
   if (title === 'Secure Bite App') {
     return (
-      <div className="project-detail-page" style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
+      <div className="project-detail-page">
         <h2>{title}</h2>
-        <p style={{ marginBottom: 32 }}>{description}</p>
+        <p>{description}</p>
         {secureBiteSections.map((section, idx) => (
-          <div key={section.label} style={{ display: 'flex', flexDirection: idx % 2 === 0 ? 'row' : 'row-reverse', alignItems: 'center', marginBottom: 48, gap: 32 }}>
-            <img src={section.img} alt={section.label} style={{ width: 260, height: 'auto', borderRadius: '32px', boxShadow: '0 4px 24px rgba(0,0,0,0.10)' }} />
+          <div key={section.label} className={`project-detail-section ${idx % 2 === 1 ? 'alternate' : ''}`}>
+            <img src={section.img} alt={section.label} />
             <div>
-              <h3 style={{ marginBottom: 12 }}>{section.label}</h3>
+              <h3>{section.label}</h3>
               <p>{section.text}</p>
             </div>
           </div>
         ))}
-        <Link to="/" style={{ color: '#7ec4ff', textDecoration: 'underline' }}>Back to Home</Link>
+        <Link to="/" className="back-link">Back to Home</Link>
       </div>
     );
   }
   // Placeholder for now, will expand later
   return (
-    <div className="project-detail-page" style={{ padding: '2rem' }}>
+    <div className="project-detail-page">
       <h2>{title}</h2>
       {images && images.map((img, i) => (
-        <img key={i} src={img} alt={title + ' screenshot ' + (i+1)} style={{ maxWidth: '400px', margin: '1rem 0', display: 'block' }} />
+        <img key={i} src={img} alt={title + ' screenshot ' + (i+1)} style={{ maxWidth: '100%', width: '400px', margin: '1rem 0', display: 'block', borderRadius: '16px' }} />
       ))}
       <p>{description}</p>
-      <Link to="/" style={{ color: '#7ec4ff', textDecoration: 'underline' }}>Back to Home</Link>
+      <Link to="/" className="back-link">Back to Home</Link>
     </div>
   );
 }
@@ -264,10 +264,38 @@ function MainSite() {
         <div className="section-container">
           <h2>Skills</h2>
           <div className="skills-grid">
-            <div className="skill-card">App Development</div>
-            <div className="skill-card">Frontend</div>
-            <div className="skill-card">Web Development</div>
-            <div className="skill-card">DSA</div>
+            <div className="skill-card">
+              <div className="skill-card-inner">
+                <div className="skill-card-front">App Development</div>
+                <div className="skill-card-back">
+                  Flutter & Dart expertise, mobile app development, UI/UX design, cross-platform solutions
+                </div>
+              </div>
+            </div>
+            <div className="skill-card">
+              <div className="skill-card-inner">
+                <div className="skill-card-front">Frontend</div>
+                <div className="skill-card-back">
+                  React.js, HTML5, CSS3, JavaScript, responsive design, modern web technologies
+                </div>
+              </div>
+            </div>
+            <div className="skill-card">
+              <div className="skill-card-inner">
+                <div className="skill-card-front">Web Development</div>
+                <div className="skill-card-back">
+                  Full-stack development, REST APIs, database design, deployment & hosting solutions
+                </div>
+              </div>
+            </div>
+            <div className="skill-card">
+              <div className="skill-card-inner">
+                <div className="skill-card-front">DSA</div>
+                <div className="skill-card-back">
+                  Problem solving, algorithms, data structures, competitive programming in C++
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </FadeInSection>
