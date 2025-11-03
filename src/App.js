@@ -119,6 +119,31 @@ function ProjectDetail({ title, description, images }) {
       label: 'Important Days & Events',
       img: process.env.PUBLIC_URL + '/Project3/ImportantDays.png',
       text: (<span>The <span className="highlight-yellow">Important Days & Events</span> section displays <span className="highlight-main">automatically extracted dates and events</span> from emails using AI, helping users stay on top of deadlines, meetings, and important academic events.</span>)
+    },
+    {
+      label: 'Generate Reply',
+      img: process.env.PUBLIC_URL + '/Project3/GenerateReply.png',
+      text: (<span>The <span className="highlight-green">Generate Reply</span> feature allows users to <span className="highlight-main">create AI-powered email replies</span> with a single click, leveraging the MiniMax M2 API to generate contextually appropriate responses.</span>)
+    },
+    {
+      label: 'Generated Reply Preview',
+      img: process.env.PUBLIC_URL + '/Project3/GeneratedReply.png',
+      text: (<span>The <span className="highlight-blue">Generated Reply Preview</span> displays the <span className="highlight-main">AI-generated email response</span> before sending, giving users a chance to review and edit the content before finalizing their reply.</span>)
+    },
+    {
+      label: 'Refine Reply',
+      img: process.env.PUBLIC_URL + '/Project3/Refine-reply.png',
+      text: (<span>The <span className="highlight-yellow">Refine Reply</span> option enables users to <span className="highlight-main">improve and customize AI-generated replies</span> by refining the tone, adding details, or adjusting the content to better match their communication style.</span>)
+    },
+    {
+      label: 'Confirm Send',
+      img: process.env.PUBLIC_URL + '/Project3/Confirm-Send.png',
+      text: (<span>The <span className="highlight-red">Confirm Send</span> screen provides a <span className="highlight-main">final review and confirmation step</span> before sending the email, ensuring accuracy and preventing accidental sends.</span>)
+    },
+    {
+      label: 'Success Confirmation',
+      img: process.env.PUBLIC_URL + '/Project3/Success.png',
+      text: (<span>The <span className="highlight-green">Success Confirmation</span> message confirms that the email has been <span className="highlight-main">successfully sent via SMTP</span>, providing users with clear feedback about the completion of their action.</span>)
     }
   ];
 
@@ -440,6 +465,11 @@ function App() {
           process.env.PUBLIC_URL + '/Project3/DarkMode.png',
           process.env.PUBLIC_URL + '/Project3/FilterOption.png',
           process.env.PUBLIC_URL + '/Project3/ImportantDays.png',
+          process.env.PUBLIC_URL + '/Project3/GenerateReply.png',
+          process.env.PUBLIC_URL + '/Project3/GeneratedReply.png',
+          process.env.PUBLIC_URL + '/Project3/Refine-reply.png',
+          process.env.PUBLIC_URL + '/Project3/Confirm-Send.png',
+          process.env.PUBLIC_URL + '/Project3/Success.png',
         ]} />} />
       </Routes>
     </Router>
