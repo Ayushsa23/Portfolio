@@ -1277,7 +1277,7 @@ section h2 {
 .project-detail-section img {
   width: 260px;
   height: auto;
-  border-radius: 32px;
+  border-radius: 0;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   flex-shrink: 0;
 }
@@ -1339,7 +1339,7 @@ section h2 {
   .project-detail-section img {
     width: 100%;
     max-width: 300px;
-    border-radius: 24px;
+    border-radius: 0;
   }
   
   .project-detail-section h3 {
@@ -1363,7 +1363,7 @@ section h2 {
   
   .project-detail-section img {
     max-width: 280px;
-    border-radius: 20px;
+    border-radius: 0;
   }
   
   .project-detail-section h3 {

@@ -88,6 +88,40 @@ function ProjectDetail({ title, description, images }) {
     }
   ];
 
+  // Section data for Mail Automation App
+  const mailAutomationSections = [
+    {
+      label: 'Login Screen',
+      img: process.env.PUBLIC_URL + '/Project3/LoginScreen.png',
+      text: (<span>The <span className="highlight-blue">Login Screen</span> provides secure authentication with IITK webmail credentials, allowing users to <span className="highlight-main">connect their email account</span> via IMAP protocol.</span>)
+    },
+    {
+      label: 'Loading Screen',
+      img: process.env.PUBLIC_URL + '/Project3/LoadingScreen.png',
+      text: (<span>The <span className="highlight-yellow">Loading Screen</span> displays while the app <span className="highlight-main">fetches and processes emails</span> from the IMAP server, providing a smooth user experience during email synchronization.</span>)
+    },
+    {
+      label: 'Light Mode Interface',
+      img: process.env.PUBLIC_URL + '/Project3/LightMode.png',
+      text: (<span>The <span className="highlight-green">Light Mode</span> interface shows the main email dashboard with <span className="highlight-main">AI-categorized emails</span>, smart filters, and easy navigation for managing your inbox efficiently.</span>)
+    },
+    {
+      label: 'Dark Mode Interface',
+      img: process.env.PUBLIC_URL + '/Project3/DarkMode.png',
+      text: (<span>The <span className="highlight-blue">Dark Mode</span> interface provides a comfortable viewing experience with <span className="highlight-main">email categories</span>, summaries, and extracted events displayed in an easy-on-the-eyes dark theme.</span>)
+    },
+    {
+      label: 'Filter Options',
+      img: process.env.PUBLIC_URL + '/Project3/FilterOption.png',
+      text: (<span>The <span className="highlight-red">Filter Options</span> allow users to <span className="highlight-main">sort and filter emails</span> by AI-generated categories like Important-Academics, Important-Deadline, Event, and General for quick access to relevant messages.</span>)
+    },
+    {
+      label: 'Important Days & Events',
+      img: process.env.PUBLIC_URL + '/Project3/ImportantDays.png',
+      text: (<span>The <span className="highlight-yellow">Important Days & Events</span> section displays <span className="highlight-main">automatically extracted dates and events</span> from emails using AI, helping users stay on top of deadlines, meetings, and important academic events.</span>)
+    }
+  ];
+
   if (title === 'Travel Buddy App') {
     return (
       <div className="project-detail-page">
@@ -112,6 +146,24 @@ function ProjectDetail({ title, description, images }) {
         <h2>{title}</h2>
         <p>{description}</p>
         {secureBiteSections.map((section, idx) => (
+          <div key={section.label} className={`project-detail-section ${idx % 2 === 1 ? 'alternate' : ''}`}>
+            <img src={section.img} alt={section.label} />
+            <div>
+              <h3>{section.label}</h3>
+              <p>{section.text}</p>
+            </div>
+          </div>
+        ))}
+        <Link to="/" className="back-link">Back to Home</Link>
+      </div>
+    );
+  }
+  if (title === 'Mail Automation Web App') {
+    return (
+      <div className="project-detail-page">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        {mailAutomationSections.map((section, idx) => (
           <div key={section.label} className={`project-detail-section ${idx % 2 === 1 ? 'alternate' : ''}`}>
             <img src={section.img} alt={section.label} />
             <div>
@@ -315,10 +367,12 @@ function MainSite() {
                 Developed the frontend of a health-oriented food recommendation app using Flutter. Designed intuitive UI for onboarding, meal tracking, and food suggestion screens. Modular widget structure for clean code and future backend integration. Smooth navigation and UX, ready for AI-based food analysis.
               </div>
             </Link>
-            <div className="project-card">
-              <div className="project-title">Coming Soon</div>
-              <div className="project-desc">Stay tuned for more exciting projects!</div>
-            </div>
+            <Link to="/projects/mail-automation" className="project-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="project-title">Mail Automation Web App</div>
+              <div className="project-desc">
+                An AI-driven web application for email automation that uses the IMAP protocol to connect to the IIT Kanpur mail system. Features secure login, AI-powered analysis using OpenRouter's MiniMax M2 API, intelligent categorization, event extraction, and AI-driven reply generation. Built with React + TypeScript + TailwindCSS frontend and Node.js + Express backend.
+              </div>
+            </Link>
           </div>
         </div>
       </FadeInSection>
@@ -376,6 +430,16 @@ function App() {
           process.env.PUBLIC_URL + '/Project2/preference-and-allergens-select.jpg',
           process.env.PUBLIC_URL + '/Project2/signup-page.jpg',
           process.env.PUBLIC_URL + '/Project2/homepage.jpg',
+        ]} />} />
+        <Route path="/projects/mail-automation" element={<ProjectDetail title="Mail Automation Web App" description={
+          `An AI-driven web application for email automation that uses the IMAP protocol to connect to the IIT Kanpur mail system.\n\n- Secure login via IMAP/SMTP protocols using IITK webmail credentials\n- AI-powered email analysis for categorization and summarizing utilizing OpenRouter's MiniMax M2 API\n- Intelligent email classification into four categories: General, Important-Event, Important-Deadline, and Important-Academics\n- Automatically extracting dates and events from emails to integrate with calendars\n- AI-driven response generation with possibilities for refinement\n- Constructed with the Node.js + Express backend and the React + TypeScript + TailwindCSS frontend`
+        } images={[
+          process.env.PUBLIC_URL + '/Project3/LoginScreen.png',
+          process.env.PUBLIC_URL + '/Project3/LoadingScreen.png',
+          process.env.PUBLIC_URL + '/Project3/LightMode.png',
+          process.env.PUBLIC_URL + '/Project3/DarkMode.png',
+          process.env.PUBLIC_URL + '/Project3/FilterOption.png',
+          process.env.PUBLIC_URL + '/Project3/ImportantDays.png',
         ]} />} />
       </Routes>
     </Router>
